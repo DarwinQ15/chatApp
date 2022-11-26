@@ -57,6 +57,7 @@ db.sync({force: true})
     .then(()=> {
         console.log('sincronizado')
         users.forEach(async(user)=> await Users.create(user));
+    
         setTimeout(()=> {
             conversations.forEach(async(conversation)=> await Conversations.create(conversation));
         }, 1000);

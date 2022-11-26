@@ -4,7 +4,7 @@ const cors = require('cors');
 const db = require('./utils/database');
 const handleError = require('./middlewares/error.middleware');
 const initModels = require('./modules/initModels');
-const {routerUser, authRoute} = require('./routes');
+const {routerUser, authRoute, conversationRouter} = require('./routes');
 
 const app = express();
 
@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1', routerUser);
-app.use('/api/v1', authRoute)
+app.use('/api/v1', authRoute);
+app.use('/api/v1', conversationRouter);
 
 app.use(handleError);
 

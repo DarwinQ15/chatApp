@@ -16,10 +16,16 @@ const registerUser = async(req, res, next) => {
 
 const getAllUsers = async (req, res, next) => {
     try {
-        const users = await userServices.getAll()
+        const offset = req.query.offset ?? 0; // cuando req.query sea null me traera 0. igual aya abajo
+        const limit = req.query.limit ?? 3;
+        const users = await userServices.getAll(offset, limit)
         res.json(users)
     } catch (error) {
-        console.log(error);
+        next({
+            status: 400,
+            errorContent: error,
+            message: 'error en el token'
+        })
     }
 }
 

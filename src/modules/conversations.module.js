@@ -1,10 +1,10 @@
 const db = require('../utils/database');
 const {DataTypes} = require('sequelize');
 
-const Conversation = db.define("conversations", {
+const Conversations = db.define("conversations", {
     id: {
         type: DataTypes.INTEGER,
-        autoincrement: true,
+        autoIncrement: true,
         primaryKey: true,
         allowNull: false
     },
@@ -27,4 +27,4 @@ const Conversation = db.define("conversations", {
     }
 });
 
-module.exports = Conversation;
+module.exports = Conversations;

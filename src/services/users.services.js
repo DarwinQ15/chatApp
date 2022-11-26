@@ -9,9 +9,12 @@ class userServices {
             throw error
         }
     }
-    static async getAll() {
+    static async getAll(offset, limit) {
         try {
-            const result = await Users.findAll()
+            const result = await Users.findAll({ //solo funciona con findAll y findAllCountd
+                offset,
+                limit,
+            })
             return result;
         } catch (error) {
             throw error
