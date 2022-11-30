@@ -20,17 +20,18 @@ class AuthServices {
             throw error
         }
     }
-    static genToken(data){
+    static async genToken(data){
         try {
             const token = jwt.sign(data, process.env.SECRET, {
                 expiresIn:'5m',
                 algorithm:'HS512'
             });
+            console.log(token);
             return token;
         } catch (error) {
             throw error
         }
     }
-}
+};
 
 module.exports = {AuthServices};
